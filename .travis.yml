@@ -11,7 +11,7 @@ script:
 deploy:
   provider: s3
   bucket: fablesaga.com
-  cleanup: false
+  skip_cleanup: true
   local_dir: dist
   region: ap-south-1
   on:
