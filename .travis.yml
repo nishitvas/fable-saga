@@ -12,7 +12,7 @@ deploy:
   provider: s3
   bucket: fablesaga.com
   skip_cleanup: true
-  local_dir: dist
+  local_dir: build
   region: ap-south-1
   on:
     branch: main
