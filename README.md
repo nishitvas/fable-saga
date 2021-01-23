@@ -1,5 +1,7 @@
 # Fable Saga
 
+[![Build Status](https://travis-ci.com/nishitvas/fable-saga.svg?branch=main)](https://travis-ci.com/nishitvas/fable-saga)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

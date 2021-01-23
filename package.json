@@ -10,6 +10,7 @@
   },
   "author": "Nishit Vas",
   "license": "ISC",
+  "homepage": "http://fablesaga.com",
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",

@@ -1,0 +1,18 @@
+language: node_js
+os: linux
+dist: xenial
+node_js:
+- stable
+cache:
+  directories:
+  - node_modules
+script:
+  - npm run build
+deploy:
+  provider: s3
+  bucket: fablesaga.com
+  skip_cleanup: true
+  local_dir: dist
+  region: ap-south-1
+  on:
+    branch: main
