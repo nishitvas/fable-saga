@@ -1,31 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAllStories } from '../api';
 import { Story } from '../model';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Alert, Row, Col, Container } from 'react-bootstrap';
 import { chunk } from 'lodash';
 import { StoryPreview } from './story-preview';
 import './index.css';
 
 const storiesInRow = 2;
 
-export const Stories = () => {
+interface FlashMessageType {
+  message: string,
+  variant: 'info' | 'danger'
+}
+interface StoriesProps {
+  useStaging?: boolean
+}
 
+export const Stories = (props: StoriesProps) => {
+
+  const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [stories, setStories] = useState<Story[]>([]);
   const [storiesContainer, setStoriesContainer] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     const getAllStories = async () => {
-      const response = await fetchAllStories();
+      const response = await fetchAllStories(props.useStaging);
       const storiesResponse: Story[] = [];
-      for (let responseObject of response.objects) {
-        storiesResponse.push({
-          slug: responseObject.slug,
-          title: responseObject.title,
-          thumbnail: responseObject.thumbnail,
-          description: responseObject.metadata.description
+      if (response.objects) {
+        for (let responseObject of response.objects) {
+          storiesResponse.push({
+            slug: responseObject.slug,
+            title: responseObject.title,
+            thumbnail: responseObject.thumbnail,
+            description: responseObject.metadata.description
+          });
+        }
+        setStories(storiesResponse);
+      } else {
+        setFlashMessage({
+          message: "No stories found !!!",
+          variant: "info"
         });
       }
-      setStories(storiesResponse);
     }
     getAllStories();
   }, []);
@@ -36,7 +52,7 @@ export const Stories = () => {
       <Row>
         {cols.map((col) => (
           <Col>
-            <StoryPreview story={col}/>
+            <StoryPreview story={col} useStaging={props.useStaging}/>
           </Col>
         ))}
       </Row>
@@ -46,6 +62,12 @@ export const Stories = () => {
 
   return (
     <div className="page-layout">
+      {
+        flashMessage ?
+        <Alert variant={flashMessage.variant}>
+          {flashMessage.message}
+        </Alert> : ''
+      }
       <Container>
         {storiesContainer}
       </Container>

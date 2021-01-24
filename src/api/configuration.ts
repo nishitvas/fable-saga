@@ -18,7 +18,7 @@ interface ConfigurationType {
 export const configuration: ConfigurationType = {
   cms: {
     baseEndpoint: "https://api.cosmicjs.com",
-    useProduction: false,
+    useProduction: true,
     limit: 20,
     staging: {
       endpoint: "/v1/fable-saga-staging",

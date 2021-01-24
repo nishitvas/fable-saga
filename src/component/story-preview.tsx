@@ -4,10 +4,12 @@ import { Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 interface StoryPreviewProps {
-  story: Story
+  story: Story,
+  useStaging?: boolean
 }
 
 export const StoryPreview = (props: StoryPreviewProps) => {
+  const prefix = props.useStaging ? "staging/" : "";
   return (
     <Card>
       <Card.Img variant="top" src={props.story.thumbnail} width="25%" height="25%" />
@@ -16,7 +18,7 @@ export const StoryPreview = (props: StoryPreviewProps) => {
         <Card.Text>
           {props.story.description}
         </Card.Text>
-        <LinkContainer to={`/story/${props.story.slug}`}>
+        <LinkContainer to={`/${prefix}story/${props.story.slug}`}>
           <Button variant="dark">Read</Button>
         </LinkContainer>
       </Card.Body>

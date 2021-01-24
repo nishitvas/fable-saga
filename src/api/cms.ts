@@ -1,6 +1,9 @@
 import { configuration } from './configuration';
 
-const getBucketConfig = () => {
+const getBucketConfig = (useStaging=false) => {
+  if (useStaging) {
+    return configuration.cms.staging;
+  }
   if (configuration.cms.useProduction) {
     return configuration.cms.production;
   } else {
@@ -8,17 +11,17 @@ const getBucketConfig = () => {
   }
 }
 
-const getEndpoint = () => {
-  return `${configuration.cms.baseEndpoint}${getBucketConfig().endpoint}`;
+const getEndpoint = (useStaging=false) => {
+  return `${configuration.cms.baseEndpoint}${getBucketConfig(useStaging).endpoint}`;
 }
 
-const getReadKey = () => {
-  return getBucketConfig().readKey;
+const getReadKey = (useStaging=false) => {
+  return getBucketConfig(useStaging).readKey;
 }
 
-export const fetchAllStories = async () => {
-  const endpoint = getEndpoint();
-  const readKey = getReadKey();
+export const fetchAllStories = async (useStaging=false) => {
+  const endpoint = getEndpoint(useStaging);
+  const readKey = getReadKey(useStaging);
   const limit = configuration.cms.limit;
   const props = "slug,title,thumbnail,metadata";
   const params = `objects?type=stories&read_key=${readKey}&limit=${limit}&props=${props}`;
@@ -26,9 +29,9 @@ export const fetchAllStories = async () => {
   return response.json();
 }
 
-export const fetchStory = async (storySlug: string) => {
-  const endpoint = getEndpoint();
-  const readKey = getReadKey();
+export const fetchStory = async (storySlug: string, useStaging=false) => {
+  const endpoint = getEndpoint(useStaging);
+  const readKey = getReadKey(useStaging);
   const props = "slug,title,thumbnail,content,metadata";
   const params = `object/${storySlug}?read_key=${readKey}&&props=${props}`;
   const response = await fetch(`${endpoint}/${params}`);
