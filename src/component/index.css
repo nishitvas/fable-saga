@@ -1,0 +1,10 @@
+.page-layout {
+  margin: 30px;
+  padding: 30px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
