@@ -25,3 +25,12 @@ export const fetchAllStories = async () => {
   const response = await fetch(`${endpoint}/${params}`);
   return response.json();
 }
+
+export const fetchStory = async (storySlug: string) => {
+  const endpoint = getEndpoint();
+  const readKey = getReadKey();
+  const props = "slug,title,thumbnail,content,metadata";
+  const params = `object/${storySlug}?read_key=${readKey}&&props=${props}`;
+  const response = await fetch(`${endpoint}/${params}`);
+  return response.json();
+}

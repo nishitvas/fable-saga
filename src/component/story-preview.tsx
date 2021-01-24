@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story } from '../model';
 import { Card, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 interface StoryPreviewProps {
   story: Story
@@ -15,7 +16,9 @@ export const StoryPreview = (props: StoryPreviewProps) => {
         <Card.Text>
           {props.story.description}
         </Card.Text>
-        <Button variant="dark">Read</Button>
+        <LinkContainer to={`/story/${props.story.slug}`}>
+          <Button variant="dark">Read</Button>
+        </LinkContainer>
       </Card.Body>
     </Card>
   );

@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import {
   Header,
   Stories,
+  StoryReader,
   AboutUs
 } from './component';
 
@@ -15,6 +16,7 @@ const App = () => {
           <Redirect to="stories" />
         </Route>
         <Route path="/stories" component={Stories} />
+        <Route path="/story/:slug" component={StoryReader} />
         <Route path="/about-us" component={AboutUs} />
       </Switch>
     </BrowserRouter>
