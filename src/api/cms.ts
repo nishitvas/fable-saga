@@ -37,3 +37,13 @@ export const fetchStory = async (storySlug: string, useStaging=false) => {
   const response = await fetch(`${endpoint}/${params}`);
   return response.json();
 }
+
+export const fetchAllMembers = async (useStaging=false) => {
+  const endpoint = getEndpoint(useStaging);
+  const readKey = getReadKey(useStaging);
+  const limit = configuration.cms.limit;
+  const props = "slug,title,thumbnail,content";
+  const params = `objects?type=members&read_key=${readKey}&limit=${limit}&props=${props}`;
+  const response = await fetch(`${endpoint}/${params}`);
+  return response.json();
+}

@@ -12,3 +12,12 @@
 .story-reader-title {
   font-size: 2.5rem;
 }
+
+.member-thumbnail {
+  width: 20vw;
+  height: 20vw;
+}
+
+.member-detail {
+  padding: 30px;
+}

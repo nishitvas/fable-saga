@@ -15,14 +15,18 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/stories" />
         </Route>
+        <Route path="/stories" component={Stories} />
+        <Route path="/story/:slug" component={StoryReader} />
+        <Route path="/about-us" component={AboutUs} />
+
         <Route exact path="/staging">
           <Redirect to="/staging/stories" />
         </Route>
-        <Route path="/stories" component={Stories} />
-        <Route path="/story/:slug" component={StoryReader} />
         <Route path="/staging/stories"><Stories useStaging={true} /></Route>
         <Route path="/staging/story/:slug"><StoryReader useStaging={true} /></Route>
-        <Route path="/about-us" component={AboutUs} />
+        <Route path="/staging/about-us">
+          <AboutUs useStaging={true} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
