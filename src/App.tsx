@@ -14,19 +14,19 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/kids-stories" />
         </Route>
-        <Route path="/home" component={Home} />
-        <Route path="/stories" component={Stories} />
-        <Route path="/story/:slug" component={StoryReader} />
+        <Route exact path="/kids-stories" component={Home} />
+        <Route path="/kids-stories/list" component={Stories} />
+        <Route path="/kids-stories/story/:slug" component={StoryReader} />
         <Route path="/about-us" component={AboutUs} />
 
         <Route exact path="/staging">
-          <Redirect to="/staging/home" />
+          <Redirect to="/staging/kids-stories" />
         </Route>
-        <Route path="/staging/home"><Home useStaging={true} /></Route>
-        <Route path="/staging/stories"><Stories useStaging={true} /></Route>
-        <Route path="/staging/story/:slug"><StoryReader useStaging={true} /></Route>
+        <Route path="/staging/kids-stories"><Home useStaging={true} /></Route>
+        <Route path="/staging/kids-stories/stories"><Stories useStaging={true} /></Route>
+        <Route path="/staging/kids-stories/story/:slug"><StoryReader useStaging={true} /></Route>
         <Route path="/staging/about-us">
           <AboutUs useStaging={true} />
         </Route>

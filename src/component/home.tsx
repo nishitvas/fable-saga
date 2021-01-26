@@ -31,7 +31,7 @@ export const Home = (props: HomeProps) => {
       <Jumbotron>
         {homeContent}
       </Jumbotron>
-      <LinkContainer to={`${prefix}/stories`}>
+      <LinkContainer to={`${prefix}/kids-stories/list`}>
         <Button variant="dark">View stories</Button>
       </LinkContainer>
     </div>

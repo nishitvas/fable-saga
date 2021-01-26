@@ -9,7 +9,7 @@ interface StoryPreviewProps {
 }
 
 export const StoryPreview = (props: StoryPreviewProps) => {
-  const prefix = props.useStaging ? "staging/" : "";
+  const prefix = props.useStaging ? "/staging/kids-stories" : "/kids-stories";
   return (
     <Card>
       <Card.Img variant="top" src={props.story.thumbnail} width="25%" height="25%" />
@@ -18,7 +18,7 @@ export const StoryPreview = (props: StoryPreviewProps) => {
         <Card.Text>
           {props.story.description}
         </Card.Text>
-        <LinkContainer to={`/${prefix}story/${props.story.slug}`}>
+        <LinkContainer to={`${prefix}/story/${props.story.slug}`}>
           <Button variant="dark">Read</Button>
         </LinkContainer>
       </Card.Body>
