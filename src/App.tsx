@@ -25,7 +25,7 @@ const App = () => {
           <Redirect to="/staging/kids-stories" />
         </Route>
         <Route path="/staging/kids-stories"><Home useStaging={true} /></Route>
-        <Route path="/staging/kids-stories/stories"><Stories useStaging={true} /></Route>
+        <Route path="/staging/kids-stories/list"><Stories useStaging={true} /></Route>
         <Route path="/staging/kids-stories/story/:slug"><StoryReader useStaging={true} /></Route>
         <Route path="/staging/about-us">
           <AboutUs useStaging={true} />
