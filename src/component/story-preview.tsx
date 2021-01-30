@@ -12,7 +12,7 @@ export const StoryPreview = (props: StoryPreviewProps) => {
   const prefix = props.useStaging ? "/staging/kids-stories" : "/kids-stories";
   return (
     <Card className="story-preview-card">
-      <Card.Img variant="top" src={props.story.thumbnail} width="25%" height="10vh" />
+      <Card.Img variant="top" src={props.story.thumbnail} className="story-preview-img" />
       <Card.Body>
         <Card.Title>{props.story.title}</Card.Title>
         <Card.Text>

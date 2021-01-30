@@ -63,6 +63,10 @@ blockquote span{
   margin: 15px;
 }
 
+.story-preview-img {
+  object-fit: contain;
+}
+
 .story-img {
   object-fit: contain;
 }
