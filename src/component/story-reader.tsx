@@ -54,7 +54,7 @@ export const StoryReader = (props: StoryReaderProps) => {
           </Alert> : story === undefined ?
         <Spinner animation="grow" /> :
         <Card>
-          <Card.Img variant="top" src={story.thumbnail} width="25%" height="25%" />
+          <Card.Img variant="top" className="story-img" src={story.thumbnail} />
           <Card.Body>
             <Card.Title className="story-reader-title">{story.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{story.description}</Card.Subtitle>

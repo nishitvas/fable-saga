@@ -54,3 +54,15 @@ blockquote span{
   font-weight: bold;
   margin-top: 1em;
 }
+
+.story-preview-card {
+  height: 100% !important;
+}
+
+.story-preview-col {
+  margin: 15px;
+}
+
+.story-img {
+  object-fit: contain;
+}

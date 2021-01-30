@@ -51,7 +51,7 @@ export const Stories = (props: StoriesProps) => {
     const container = chunkedStories.map((cols) => (
       <Row>
         {cols.map((col) => (
-          <Col>
+          <Col className="story-preview-col">
             <StoryPreview story={col} useStaging={props.useStaging}/>
           </Col>
         ))}
