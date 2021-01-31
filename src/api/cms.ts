@@ -57,3 +57,13 @@ export const fetchHomeContent = async (useStaging=false) => {
   const response = await fetch(`${endpoint}/${params}`);
   return response.json();
 }
+
+export const fetchAllSketches = async (useStaging=false) => {
+  const endpoint = getEndpoint(useStaging);
+  const readKey = getReadKey(useStaging);
+  const limit = configuration.cms.limit;
+  const props = "slug,title,metadata";
+  const params = `objects?type=sketches&read_key=${readKey}&limit=${limit}&props=${props}`;
+  const response = await fetch(`${endpoint}/${params}`);
+  return response.json();
+}
