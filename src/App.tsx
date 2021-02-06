@@ -5,7 +5,6 @@ import {
   Home,
   Stories,
   StoryReader,
-  Sketches,
   AboutUs
 } from './component';
 
@@ -20,7 +19,6 @@ const App = () => {
         <Route exact path="/kids-stories" component={Home} />
         <Route exact path="/kids-stories/list" component={Stories} />
         <Route exact path="/kids-stories/story/:slug" component={StoryReader} />
-        <Route exact path="/sketches" component={Sketches} />
         <Route exact path="/about-us" component={AboutUs} />
 
         <Route exact path="/staging">
@@ -29,7 +27,6 @@ const App = () => {
         <Route exact path="/staging/kids-stories"><Home useStaging={true} /></Route>
         <Route exact path="/staging/kids-stories/list"><Stories useStaging={true} /></Route>
         <Route exact path="/staging/kids-stories/story/:slug"><StoryReader useStaging={true} /></Route>
-        <Route exact path="/staging/sketches"><Sketches useStaging={true} /></Route>
         <Route exact path="/staging/about-us">
           <AboutUs useStaging={true} />
         </Route>

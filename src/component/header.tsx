@@ -12,9 +12,6 @@ export const Header = () => {
         <LinkContainer to="/kids-stories/list">
           <Nav.Link>Kids Stories</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/sketches">
-          <Nav.Link>Sketches</Nav.Link>
-        </LinkContainer>
         <LinkContainer to="/about-us">
           <Nav.Link>About Us</Nav.Link>
         </LinkContainer>
