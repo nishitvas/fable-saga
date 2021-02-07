@@ -4,9 +4,9 @@ import { Story } from '../model';
 import { Alert, Row, Col, Container } from 'react-bootstrap';
 import { chunk } from 'lodash';
 import { StoryPreview } from './story-preview';
-import './index.css';
 
 const storiesInRow = 2;
+const storiesInRowForSmallDevices = 1;
 
 interface FlashMessageType {
   message: string,
@@ -21,6 +21,7 @@ export const Stories = (props: StoriesProps) => {
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [stories, setStories] = useState<Story[]>([]);
   const [storiesContainer, setStoriesContainer] = useState<JSX.Element[]>([]);
+  const [storiesContainerSmallDevices, setStoriesContainerSmallDevices] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     const getAllStories = async () => {
@@ -60,6 +61,20 @@ export const Stories = (props: StoriesProps) => {
     setStoriesContainer(container);
   }, [stories]);
 
+  useEffect(() => {
+    const chunkedStories = chunk(stories, storiesInRowForSmallDevices);
+    const container = chunkedStories.map((cols) => (
+      <Row>
+        {cols.map((col) => (
+          <Col className="story-preview-col">
+            <StoryPreview story={col} useStaging={props.useStaging}/>
+          </Col>
+        ))}
+      </Row>
+    ));
+    setStoriesContainerSmallDevices(container);
+  }, [stories]);
+
   return (
     <div className="page-layout">
       {
@@ -68,8 +83,11 @@ export const Stories = (props: StoriesProps) => {
           {flashMessage.message}
         </Alert> : ''
       }
-      <Container>
+      <Container className="d-none d-lg-block">
         {storiesContainer}
+      </Container>
+      <Container className="d-lg-none">
+        {storiesContainerSmallDevices}
       </Container>
     </div>
   );
