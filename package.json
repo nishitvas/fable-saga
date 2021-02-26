@@ -12,6 +12,10 @@
   "license": "ISC",
   "homepage": "http://fablesaga.com",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "bootstrap": "^4.6.0",
     "loadash": "^1.0.0",
     "react": "17.0.1",
