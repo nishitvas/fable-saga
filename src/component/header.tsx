@@ -6,7 +6,7 @@ import {
   faFacebook,
   faTwitter,
   faPinterest,
-  faLinkedin
+  faWhatsapp
 } from '@fortawesome/free-brands-svg-icons';
 import {
   faEnvelope
@@ -45,8 +45,8 @@ export const Header = () => {
         <Nav.Link href="https://pinterest.com/pin/create/button/?url=https://fablesaga.com&media=&description=Check%20out%20FableSaga%20for%20kids%20stories">
           <FontAwesomeIcon icon={faPinterest} size="2x"/>
         </Nav.Link>
-        <Nav.Link href="https://www.linkedin.com/shareArticle?mini=true&url=https://fablesaga.com">
-          <FontAwesomeIcon icon={faLinkedin} size="2x"/>
+        <Nav.Link href="https://wa.me/?text=Check+out+FableSaga+for+kids+stories.+https%3A%2F%2Ffablesaga.com">
+          <FontAwesomeIcon icon={faWhatsapp} size="2x"/>
         </Nav.Link>
         <Nav.Link href="mailto:info@example.com?&subject=&cc=&bcc=&body=https://fablesaga.com%0ACheck%20out%20FableSaga%20for%20kids%20stories">
           <FontAwesomeIcon icon={faEnvelope} size="2x"/>
