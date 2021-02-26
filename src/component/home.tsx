@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Spinner, Jumbotron, Button } from 'react-bootstrap';
+import { Spinner, Jumbotron, DropdownButton, Dropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { fetchHomeContent } from '../api';
 
@@ -31,9 +31,23 @@ export const Home = (props: HomeProps) => {
       <Jumbotron>
         {homeContent}
       </Jumbotron>
-      <LinkContainer to={`${prefix}/kids-stories/list`}>
-        <Button variant="dark">View stories</Button>
-      </LinkContainer>
+      <DropdownButton
+        variant="dark"
+        id="dropdown-button-drop-right"
+        title="View Stories"
+        drop="right"
+      >
+        <Dropdown.Item>
+          <LinkContainer to={`${prefix}/kids-stories/list/en`}>
+            <Dropdown.Item>English</Dropdown.Item>
+          </LinkContainer>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <LinkContainer to={`${prefix}/kids-stories/list/kn`}>
+            <Dropdown.Item>ಕನ್ನಡ</Dropdown.Item>
+          </LinkContainer>
+        </Dropdown.Item>
+      </DropdownButton>
     </div>
   );
 }

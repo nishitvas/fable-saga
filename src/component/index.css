@@ -89,3 +89,8 @@ blockquote span{
 .story-img {
   object-fit: contain;
 }
+
+.nav-link {
+  font-size: large;
+  font-weight: bold;
+}

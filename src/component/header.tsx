@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -19,9 +19,18 @@ export const Header = () => {
         <Navbar.Brand><img src="/assets/logo.png"/></Navbar.Brand>
       </LinkContainer>
       <Nav className="m-auto">
-        <LinkContainer to="/kids-stories/list">
-          <Nav.Link>Kids Stories</Nav.Link>
-        </LinkContainer>
+        <NavDropdown title="Kids Stories" id="nav-dropdown">
+          <NavDropdown.Item eventKey="english">
+            <LinkContainer to="/kids-stories/list/en">
+              <Nav.Link>English</Nav.Link>
+            </LinkContainer>
+          </NavDropdown.Item>
+          <NavDropdown.Item eventKey="kannada">
+            <LinkContainer to="/kids-stories/list/kn">
+              <Nav.Link>ಕನ್ನಡ</Nav.Link>
+            </LinkContainer>
+          </NavDropdown.Item>
+        </NavDropdown>
         <LinkContainer to="/about-us">
           <Nav.Link>About Us</Nav.Link>
         </LinkContainer>

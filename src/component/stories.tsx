@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchAllStories } from '../api';
 import { Story } from '../model';
 import { Alert, Row, Col, Container } from 'react-bootstrap';
@@ -16,6 +17,10 @@ interface StoriesProps {
   useStaging?: boolean
 }
 
+interface StoriesParams {
+  language?: string
+}
+
 export const Stories = (props: StoriesProps) => {
 
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
@@ -23,9 +28,13 @@ export const Stories = (props: StoriesProps) => {
   const [storiesContainer, setStoriesContainer] = useState<JSX.Element[]>([]);
   const [storiesContainerSmallDevices, setStoriesContainerSmallDevices] = useState<JSX.Element[]>([]);
 
+  const { language } = useParams<StoriesParams>();
+
   useEffect(() => {
+    setStories([]);
+    setFlashMessage(undefined);
     const getAllStories = async () => {
-      const response = await fetchAllStories(props.useStaging);
+      const response = await fetchAllStories(props.useStaging, language);
       const storiesResponse: Story[] = [];
       if (response.objects) {
         for (let responseObject of response.objects) {
@@ -45,7 +54,7 @@ export const Stories = (props: StoriesProps) => {
       }
     }
     getAllStories();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const chunkedStories = chunk(stories, storiesInRow);
