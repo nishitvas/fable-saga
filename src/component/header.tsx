@@ -16,7 +16,7 @@ export const Header = () => {
   return (
     <Navbar bg="light" variant="light">
       <LinkContainer to="/kids-stories">
-        <Navbar.Brand><img src="assets/logo.png"/></Navbar.Brand>
+        <Navbar.Brand><img src="/assets/logo.png"/></Navbar.Brand>
       </LinkContainer>
       <Nav className="m-auto">
         <LinkContainer to="/kids-stories/list">
