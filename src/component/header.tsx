@@ -4,9 +4,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 export const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="light" variant="light">
       <LinkContainer to="/kids-stories">
-        <Navbar.Brand>Fable Saga</Navbar.Brand>
+        <Navbar.Brand><img src="assets/logo.png"/></Navbar.Brand>
       </LinkContainer>
       <Nav className="mr-auto">
         <LinkContainer to="/kids-stories/list">
