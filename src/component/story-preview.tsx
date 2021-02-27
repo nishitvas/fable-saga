@@ -5,11 +5,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 interface StoryPreviewProps {
   story: Story,
-  useStaging?: boolean
+  useStaging?: boolean,
+  language?: string
 }
 
 export const StoryPreview = (props: StoryPreviewProps) => {
   const prefix = props.useStaging ? "/staging/kids-stories" : "/kids-stories";
+  const readText = props.language === "kn" ? "ಓದಿ" : "Read";
   return (
     <Card className="story-preview-card">
       <Card.Img variant="top" src={props.story.thumbnail} className="story-preview-img" />
@@ -19,7 +21,7 @@ export const StoryPreview = (props: StoryPreviewProps) => {
           {props.story.description}
         </Card.Text>
         <LinkContainer to={`${prefix}/story/${props.story.slug}`}>
-          <Button variant="dark">Read</Button>
+          <Button variant="dark">{readText}</Button>
         </LinkContainer>
       </Card.Body>
     </Card>

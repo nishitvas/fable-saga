@@ -58,11 +58,11 @@ export const Stories = (props: StoriesProps) => {
 
   useEffect(() => {
     const chunkedStories = chunk(stories, storiesInRow);
-    const container = chunkedStories.map((cols) => (
-      <Row>
-        {cols.map((col) => (
-          <Col className="story-preview-col">
-            <StoryPreview story={col} useStaging={props.useStaging}/>
+    const container = chunkedStories.map((cols, row_idx) => (
+      <Row key={row_idx}>
+        {cols.map((col, col_idx) => (
+          <Col className="story-preview-col" key={col_idx}>
+            <StoryPreview story={col} useStaging={props.useStaging} language={language}/>
           </Col>
         ))}
       </Row>
@@ -72,17 +72,17 @@ export const Stories = (props: StoriesProps) => {
 
   useEffect(() => {
     const chunkedStories = chunk(stories, storiesInRowForSmallDevices);
-    const container = chunkedStories.map((cols) => (
-      <Row>
-        {cols.map((col) => (
-          <Col className="story-preview-col">
-            <StoryPreview story={col} useStaging={props.useStaging}/>
+    const container = chunkedStories.map((cols, row_idx) => (
+      <Row key={row_idx}>
+        {cols.map((col, col_idx) => (
+          <Col className="story-preview-col" key={col_idx}>
+            <StoryPreview story={col} useStaging={props.useStaging} language={language}/>
           </Col>
         ))}
       </Row>
     ));
     setStoriesContainerSmallDevices(container);
-  }, [stories]);
+  }, [stories, language]);
 
   return (
     <div className="page-layout">
