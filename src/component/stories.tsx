@@ -6,7 +6,7 @@ import { Alert, Row, Col, Container } from 'react-bootstrap';
 import { chunk } from 'lodash';
 import { StoryPreview } from './story-preview';
 
-const storiesInRow = 2;
+const storiesInColumns = 2;
 const storiesInRowForSmallDevices = 1;
 
 interface FlashMessageType {
@@ -25,7 +25,7 @@ export const Stories = (props: StoriesProps) => {
 
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [stories, setStories] = useState<Story[]>([]);
-  const [storiesContainer, setStoriesContainer] = useState<JSX.Element[]>([]);
+  const [storiesContainer, setStoriesContainer] = useState<JSX.Element>();
   const [storiesContainerSmallDevices, setStoriesContainerSmallDevices] = useState<JSX.Element[]>([]);
 
   const { language } = useParams<StoriesParams>();
@@ -57,16 +57,53 @@ export const Stories = (props: StoriesProps) => {
   }, [language]);
 
   useEffect(() => {
-    const chunkedStories = chunk(stories, storiesInRow);
-    const container = chunkedStories.map((cols, row_idx) => (
-      <Row key={row_idx}>
-        {cols.map((col, col_idx) => (
-          <Col className="story-preview-col" key={col_idx}>
-            <StoryPreview story={col} useStaging={props.useStaging} language={language}/>
-          </Col>
-        ))}
-      </Row>
-    ));
+    // const chunkedStories = chunk(stories, stories.length / storiesInColumns);
+    // const container = chunkedStories.map((cols, row_idx) => (
+    //   <Row key={row_idx}>
+    //     {cols.map((col, col_idx) => (
+    //       <Col className="story-preview-col" key={col_idx}>
+    //         <StoryPreview story={col} useStaging={props.useStaging} language={language}/>
+    //       </Col>
+    //     ))}
+    //   </Row>
+    // ));
+    const leftStories: Story[] = [];
+    const rightStories: Story[] = [];
+    for (let i=0; i < stories.length; i++) {
+      if (i % 2 === 0) {
+        leftStories.push(stories[i]);
+      } else {
+        rightStories.push(stories[i]);
+      }
+    }
+    const container = <Row>
+      <Col>
+        {
+          leftStories.map((story, idx) =>
+            <StoryPreview
+              key={idx}
+              story={story}
+              useStaging={props.useStaging}
+              language={language}
+              variant={idx % 2 === 0 ? "left" : "right"}
+            />
+          )
+        }
+      </Col>
+      <Col>
+        {
+          rightStories.map((story, idx) =>
+            <StoryPreview
+              key={idx}
+              story={story}
+              useStaging={props.useStaging}
+              language={language}
+              variant={idx % 2 === 0 ? "right" : "left"}
+            />
+          )
+        }
+      </Col>
+    </Row>;
     setStoriesContainer(container);
   }, [stories]);
 
