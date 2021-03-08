@@ -5,7 +5,9 @@ import {
   Home,
   Stories,
   StoryReader,
-  AboutUs
+  AboutUs,
+  Games,
+  FifteenPuzzleGame
 } from './component';
 
 const App = () => {
@@ -30,6 +32,10 @@ const App = () => {
         <Route exact path="/staging/about-us">
           <AboutUs useStaging={true} />
         </Route>
+
+        {/* Games Routes */}
+        <Route exact path="/games" component={Games} />
+        <Route exact path="/game/fifteen-puzzle-game" component={FifteenPuzzleGame} />
       </Switch>
     </BrowserRouter>
   );

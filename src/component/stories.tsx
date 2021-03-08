@@ -6,7 +6,6 @@ import { Alert, Row, Col, Container } from 'react-bootstrap';
 import { chunk } from 'lodash';
 import { StoryPreview } from './story-preview';
 
-const storiesInColumns = 2;
 const storiesInRowForSmallDevices = 1;
 
 interface FlashMessageType {
@@ -57,16 +56,6 @@ export const Stories = (props: StoriesProps) => {
   }, [language]);
 
   useEffect(() => {
-    // const chunkedStories = chunk(stories, stories.length / storiesInColumns);
-    // const container = chunkedStories.map((cols, row_idx) => (
-    //   <Row key={row_idx}>
-    //     {cols.map((col, col_idx) => (
-    //       <Col className="story-preview-col" key={col_idx}>
-    //         <StoryPreview story={col} useStaging={props.useStaging} language={language}/>
-    //       </Col>
-    //     ))}
-    //   </Row>
-    // ));
     const leftStories: Story[] = [];
     const rightStories: Story[] = [];
     for (let i=0; i < stories.length; i++) {

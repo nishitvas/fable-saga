@@ -31,6 +31,9 @@ export const Header = () => {
             </LinkContainer>
           </NavDropdown.Item>
         </NavDropdown>
+        <LinkContainer to="/games">
+          <Nav.Link>Games</Nav.Link>
+        </LinkContainer>
         <LinkContainer to="/about-us">
           <Nav.Link>About Us</Nav.Link>
         </LinkContainer>

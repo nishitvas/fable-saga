@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story } from '../model';
-import { Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Container, Row, Col } from 'react-bootstrap';
 
 interface StoryPreviewProps {
   story: Story,
