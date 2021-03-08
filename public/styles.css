@@ -1,6 +1,9 @@
 body {
   font-family: 'Exo 2', sans-serif !important;
   background-color: #8EC5FC;
-  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  background-image: url("/assets/background.png");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  min-height: 100vh;
   margin: 0;
 }
