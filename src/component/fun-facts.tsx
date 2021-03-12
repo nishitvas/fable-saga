@@ -16,7 +16,12 @@ export const FunFacts = (props: FunFactsProps) => {
       const responseObject = response.object;
       if (responseObject) {
         setFunFactsContent(
-          <div dangerouslySetInnerHTML={{__html: responseObject.content}} />
+          <React.Fragment>
+            <div className="fun-facts-image-div">
+              <img className="fun-facts-image" src={responseObject.thumbnail} />
+            </div>
+            <div dangerouslySetInnerHTML={{__html: responseObject.content}} />
+          </React.Fragment>
         );
       }
     }
@@ -26,7 +31,7 @@ export const FunFacts = (props: FunFactsProps) => {
   const prefix = props.useStaging ? "/staging" : "";
 
   return (
-    <div className="page-layout">
+    <div className="page-layout fun-facts">
       <Jumbotron>
         {funFactsContent}
       </Jumbotron>

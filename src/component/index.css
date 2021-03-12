@@ -104,3 +104,12 @@ blockquote span{
   padding-left: 5px !important;
   padding-right: 5px !important;
 }
+
+.fun-facts-image {
+  width: 20vw;
+  height: 30vh;
+}
+
+.fun-facts-image-div {
+  text-align: center;
+}

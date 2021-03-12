@@ -63,7 +63,7 @@ export const fetchFunFactsContent = async (useStaging=false) => {
   const endpoint = getEndpoint(useStaging);
   const readKey = getReadKey(useStaging);
   const homeSlug = "fun-facts";
-  const props = "slug,content";
+  const props = "slug,content,thumbnail";
   const params = `object/${homeSlug}?read_key=${readKey}&props=${props}`;
   const response = await fetch(`${endpoint}/${params}`);
   return response.json();

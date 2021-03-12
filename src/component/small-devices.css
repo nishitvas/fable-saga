@@ -51,4 +51,9 @@
   .member-detail {
     padding: 30px;
   }
+
+  .fun-facts-image {
+    width: 60vw;
+    height: 20vh;
+  }
 }
