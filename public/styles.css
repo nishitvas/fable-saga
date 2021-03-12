@@ -1,9 +1,22 @@
 body {
   font-family: 'Exo 2', sans-serif !important;
   background-color: #8EC5FC;
-  background-image: url("/assets/background.png");
+  background: linear-gradient(45deg, #ee775280, #e73c7e80, #23a6d580, #23d5ab80);
+  animation: gradient 15s ease infinite;
   background-repeat: no-repeat;
-  background-size:100% 100%;
+  background-size: 400% 400%;
   min-height: 100vh;
   margin: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
