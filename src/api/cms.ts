@@ -58,3 +58,13 @@ export const fetchHomeContent = async (useStaging=false) => {
   const response = await fetch(`${endpoint}/${params}`);
   return response.json();
 }
+
+export const fetchFunFactsContent = async (useStaging=false) => {
+  const endpoint = getEndpoint(useStaging);
+  const readKey = getReadKey(useStaging);
+  const homeSlug = "fun-facts";
+  const props = "slug,content";
+  const params = `object/${homeSlug}?read_key=${readKey}&props=${props}`;
+  const response = await fetch(`${endpoint}/${params}`);
+  return response.json();
+}
