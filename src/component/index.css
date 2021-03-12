@@ -87,7 +87,7 @@ blockquote span{
 /* Add some padding inside the card container */
 .custom-card-container {
   padding: 10px 16px;
-  text-align: justify;
+  text-align: left;
 }
 
 .custom-card-img {
