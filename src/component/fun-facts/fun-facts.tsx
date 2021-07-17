@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner, Jumbotron } from 'react-bootstrap';
-import { fetchFunFactsContent } from '../api';
+import { fetchFunFactsContent } from '../../api';
+import { updateBackgroundForPath } from '../../util';
 
 interface FunFactsProps {
   useStaging?: boolean
@@ -8,6 +9,7 @@ interface FunFactsProps {
 
 export const FunFacts = (props: FunFactsProps) => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [funFactsContent, setFunFactsContent] = useState<JSX.Element>(<Spinner animation="grow"/>);
 
   useEffect(() => {

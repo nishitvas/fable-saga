@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchAllStories } from '../api';
-import { Story } from '../model';
-import { Alert, Row, Col, Container } from 'react-bootstrap';
+import { fetchAllStories, fetchHomeContent } from '../../api';
+import { Story } from '../../model';
+import { Alert, Card, Row, Col, Container, Spinner, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { chunk } from 'lodash';
 import { StoryPreview } from './story-preview';
+import { updateBackgroundForPath } from '../../util';
 
 const storiesInRowForSmallDevices = 1;
 
@@ -22,12 +24,27 @@ interface StoriesParams {
 
 export const Stories = (props: StoriesProps) => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [stories, setStories] = useState<Story[]>([]);
   const [storiesContainer, setStoriesContainer] = useState<JSX.Element>();
   const [storiesContainerSmallDevices, setStoriesContainerSmallDevices] = useState<JSX.Element[]>([]);
+  const [welcomeContent, setWelcomeContent] = useState<JSX.Element>(<Spinner animation="grow"/>);
 
   const { language } = useParams<StoriesParams>();
+
+  useEffect(() => {
+    const getWelcomeContent = async () => {
+      const response = await fetchHomeContent(props.useStaging);
+      const responseObject = response.object;
+      if (responseObject) {
+        setWelcomeContent(
+          <div dangerouslySetInnerHTML={{__html: responseObject.content}} />
+        );
+      }
+    }
+    getWelcomeContent();
+  }, []);
 
   useEffect(() => {
     setStories([]);
@@ -110,6 +127,11 @@ export const Stories = (props: StoriesProps) => {
     setStoriesContainerSmallDevices(container);
   }, [stories, language]);
 
+  const prefix: string = props.useStaging ? "/staging" : "";
+  const viewInLanguage: string = language === "kn" ? "en" : "kn";
+  const viewInLanguageContent: string = viewInLanguage === "kn" ? "ಕನ್ನಡದಲ್ಲಿ ಕಥೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ" : "View stories in English";
+  
+
   return (
     <div className="page-layout">
       {
@@ -118,6 +140,20 @@ export const Stories = (props: StoriesProps) => {
           {flashMessage.message}
         </Alert> : ''
       }
+      <Container>
+        <Row>
+          <Col>
+            <div className="card custom-card">
+              <div className="custom-card-container">
+                {welcomeContent}
+                <LinkContainer to={`${prefix}/kids-stories/${viewInLanguage}`}>
+                  <Button variant="dark">{viewInLanguageContent}</Button>
+                </LinkContainer>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
       <Container className="d-none d-lg-block">
         {storiesContainer}
       </Container>

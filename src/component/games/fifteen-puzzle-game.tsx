@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Form, Button } from 'react-bootstrap';
 import { Fireworks } from './fireworks';
 import { chunk } from 'lodash';
+import { updateBackgroundForPath } from '../../util';
 import './fifteen-puzzle-game.css';
 
 interface GameStateType {
@@ -75,6 +76,7 @@ const isGameWon = (gameState: number[]) => {
 
 export const FifteenPuzzleGame = () => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [difficulty, setDifficulty] = useState<number>(3);
   const [gameWon, setGameWon] = useState<boolean>(false);
   const [freePosition, setFreePosition] = useState<number>(0);

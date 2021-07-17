@@ -21,12 +21,12 @@ export const Header = () => {
       <Nav className="m-auto">
         <NavDropdown title="Kids Stories" id="nav-dropdown">
           <NavDropdown.Item eventKey="english">
-            <LinkContainer to="/kids-stories/list/en">
+            <LinkContainer to="/kids-stories/en">
               <Nav.Link>English</Nav.Link>
             </LinkContainer>
           </NavDropdown.Item>
           <NavDropdown.Item eventKey="kannada">
-            <LinkContainer to="/kids-stories/list/kn">
+            <LinkContainer to="/kids-stories/kn">
               <Nav.Link>ಕನ್ನಡ</Nav.Link>
             </LinkContainer>
           </NavDropdown.Item>

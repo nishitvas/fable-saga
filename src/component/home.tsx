@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Spinner, Jumbotron, DropdownButton, Dropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { fetchHomeContent } from '../api';
+import { updateBackgroundForPath } from '../util';
 
 interface HomeProps {
   useStaging?: boolean
@@ -9,6 +10,7 @@ interface HomeProps {
 
 export const Home = (props: HomeProps) => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [homeContent, setHomeContent] = useState<JSX.Element>(<Spinner animation="grow"/>);
 
   useEffect(() => {

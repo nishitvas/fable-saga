@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { chunk } from 'lodash';
+import { updateBackgroundForPath } from '../../util';
 
 interface Game {
   title: string,
@@ -21,6 +22,7 @@ const games: Game[] = [
 
 export const Games = () => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [gamesContainer, setGamesContainer] = useState<JSX.Element>();
   const [gamesContainerSmallDevices, setGamesContainerSmallDevices] = useState<JSX.Element[]>([]);
 

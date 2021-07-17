@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Container, Image, Row, Col, Jumbotron } from 'react-bootstrap';
-import { Member } from '../model/member';
-import { fetchAllMembers } from '../api';
+import { Alert, Container, Image, Row, Col } from 'react-bootstrap';
+import { Member } from '../../model/member';
+import { fetchAllMembers } from '../../api';
+import { updateBackgroundForPath } from '../../util';
 
 interface FlashMessageType {
   message: string,
@@ -13,6 +14,8 @@ interface AboutUsProps {
 }
 
 export const AboutUs = (props: AboutUsProps) => {
+
+  updateBackgroundForPath(window.location.pathname);
 
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [members, setMembers] = useState<Member[]>();

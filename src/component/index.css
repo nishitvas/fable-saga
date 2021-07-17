@@ -76,6 +76,8 @@ blockquote span{
   margin: 10px 10px;
   padding: 5px 5px;
   flex-direction: row;
+  border: 2pt solid black !important;
+  font-weight: bold;
   background: none !important;
 }
 
@@ -112,4 +114,18 @@ blockquote span{
 
 .fun-facts-image-div {
   text-align: center;
+}
+
+.jumbotron {
+  background-color: transparent;
+}
+
+.card {
+  background: none;
+  border: none;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  color: #000;
 }

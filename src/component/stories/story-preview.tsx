@@ -1,7 +1,8 @@
 import React from 'react';
-import { Story } from '../model';
+import { Story } from '../../model';
 import { Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { updateBackgroundForPath } from '../../util';
 
 interface StoryPreviewProps {
   story: Story,
@@ -11,6 +12,9 @@ interface StoryPreviewProps {
 }
 
 export const StoryPreview = (props: StoryPreviewProps) => {
+
+  updateBackgroundForPath(window.location.pathname);
+
   const prefix = props.useStaging ? "/staging/kids-stories" : "/kids-stories";
   const readText = props.language === "kn" ? "ಓದಿ" : "Read";
   let previewElement;

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchStory } from '../api';
-import { Story } from '../model';
+import { fetchStory } from '../../api';
+import { Story } from '../../model';
 import { Alert, Card, Spinner } from 'react-bootstrap';
+import { updateBackgroundForPath } from '../../util';
 
 interface StoryReaderParams {
   slug: string
@@ -19,6 +20,7 @@ interface FlashMessageType {
 
 export const StoryReader = (props: StoryReaderProps) => {
 
+  updateBackgroundForPath(window.location.pathname);
   const [flashMessage, setFlashMessage] = useState<FlashMessageType>();
   const [story, setStory] = useState<Story>();
   const { slug } = useParams<StoryReaderParams>();
